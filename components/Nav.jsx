@@ -17,11 +17,9 @@ export default function Nav() {
     const items = [
         // App Router routes
         { href: '/', label: 'Server Action (App)' },
-
         { href: '/ssr', label: 'SSR (App)' },
         { href: '/ssg', label: 'SSG (App)' },
         { href: '/isr', label: 'ISR (App)' },
-
         { href: '/server-fn', label: 'Server Fn (App)' },
 
         // Migrated “-page” versions, also under App Router now
