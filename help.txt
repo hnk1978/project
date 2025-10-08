@@ -1,0 +1,2 @@
+How to use the application:
+To review the application, you can fill out and submit the "Server Action" form and then view the various pages.
