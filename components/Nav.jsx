@@ -1,19 +1,86 @@
 // components/Nav.jsx
-export default function Nav() {
-    return (
-        <nav className="mt-4 flex gap-3 text-sm">
-            {/* App Router pages */}
-            <a href="/" className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md">Server Action (App)</a>
-            <a href="/ssr" className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md">SSR (App)</a>
-            <a href="/ssg" className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md">SSG (App)</a>
-            <a href="/isr" className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md">ISR (App)</a>
-            <a href="/csr" className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md">CSR (App)</a>
-            <a href="/server-fn" className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md">Server Fn (App)</a>
+'use client';
 
-            {/* Pages Router versions */}
-            <a href="/ssr-page" className="px-3 py-1 rounded-lg bg-slate-100 shadow-sm hover:shadow-md">SSR (Pages)</a>
-            <a href="/ssg-page" className="px-3 py-1 rounded-lg bg-slate-100 shadow-sm hover:shadow-md">SSG (Pages)</a>
-            <a href="/isr-page" className="px-3 py-1 rounded-lg bg-slate-100 shadow-sm hover:shadow-md">ISR (Pages)</a>
+import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+
+export default function Nav() {
+    const [open, setOpen] = useState(false);
+    const pathname = usePathname();
+
+    // Close the mobile menu whenever route changes
+    useEffect(() => {
+        setOpen(false);
+    }, [pathname]);
+
+    const items = [
+        // App Router routes
+        { href: '/', label: 'Server Action (App)' },
+
+        { href: '/ssr', label: 'SSR (App)' },
+        { href: '/ssg', label: 'SSG (App)' },
+        { href: '/isr', label: 'ISR (App)' },
+
+        { href: '/server-fn', label: 'Server Fn (App)' },
+
+        // Migrated “-page” versions, also under App Router now
+        { href: '/ssr-page', label: 'SSR Page' },
+        { href: '/ssg-page', label: 'SSG Page' },
+        { href: '/isr-page', label: 'ISR Page' },
+    ];
+
+    return (
+        <nav className="mb-4">
+            {/* Top bar */}
+            <div className="flex items-center justify-between">
+                <div className="text-base sm:text-lg font-semibold">Next.js Data Fetching — MongoDB</div>
+
+                <button
+                    type="button"
+                    onClick={() => setOpen(v => !v)}
+                    aria-expanded={open}
+                    aria-controls="primary-nav"
+                    className="sm:hidden inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm
+                     hover:bg-white focus:outline-none focus:ring-2 focus:ring-slate-400"
+                >
+                    Menu <span className="i">≡</span>
+                </button>
+            </div>
+
+            {/* Mobile (collapsible) */}
+            <div
+                id="primary-nav"
+                className={`sm:hidden mt-3 overflow-hidden transition-[max-height] duration-300
+                   ${open ? 'max-h-96' : 'max-h-0'}`}
+            >
+                <ul className="grid gap-2">
+                    {items.map(it => (
+                        <li key={it.href}>
+                            <Link
+                                href={it.href}
+                                className="block w-full rounded-lg bg-white px-3 py-2 text-sm shadow-sm hover:shadow-md active:scale-[0.99]"
+                            >
+                                {it.label}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
+            {/* Desktop / tablet */}
+            <ul className="hidden sm:flex sm:flex-wrap sm:gap-2 mt-3">
+                {items.map(it => (
+                    <li key={it.href}>
+                        <Link
+                            href={it.href}
+                            className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md text-sm"
+                        >
+                            {it.label}
+                        </Link>
+                    </li>
+                ))}
+            </ul>
         </nav>
     );
 }

@@ -5,42 +5,23 @@ export const metadata = {
   description: 'Demo of SSR / SSG / ISR / CSR / Server Action / Server Function with MongoDB'
 }
 
+
+// app/layout.js
+import Nav from '../components/Nav';
+
+export const viewport = { width: 'device-width', initialScale: 1, maximumScale: 1, viewportFit: 'cover' };
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className="min-h-screen bg-slate-50 text-slate-900 antialiased">
-        <div className="max-w-4xl mx-auto p-6">
+    <html lang="en" className="h-full bg-slate-50 text-slate-900 antialiased">
+      <body className="min-h-screen pt-[env(safe-area-inset-top)]">
+        <div className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8 py-6">
           <header className="mb-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <h1 className="text-2xl font-semibold">Next.js Data fetching strategies — MongoDB</h1>
-                <p className="text-sm text-slate-500">Interactive demo of SSR / SSG / ISR / CSR / Server Actions</p>
-              </div>
-              <div className=" text-slate-500 font-bold text-xl">Professor: Mr. Ali Azimi</div>
-
-            </div>
-
-            <nav className="mt-4 flex gap-3 text-sm">
-              {/* App Router pages */}
-              <a href="/" className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md">Server Action (App)</a>
-              <a href="/ssr" className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md">SSR (App)</a>
-              <a href="/ssg" className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md">SSG (App)</a>
-              <a href="/isr" className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md">ISR (App)</a>
-              <a href="/csr" className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md">CSR (App)</a>
-              <a href="/server-fn" className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md">Server Fn (App)</a>
-
-              {/* Pages Router versions */}
-              <a href="/ssr-page" className="px-3 py-1 rounded-lg bg-slate-100 shadow-sm hover:shadow-md">SSR (Pages)</a>
-              <a href="/ssg-page" className="px-3 py-1 rounded-lg bg-slate-100 shadow-sm hover:shadow-md">SSG (Pages)</a>
-              <a href="/isr-page" className="px-3 py-1 rounded-lg bg-slate-100 shadow-sm hover:shadow-md">ISR (Pages)</a>
-            </nav>
+            <Nav />
           </header>
-
           <main>{children}</main>
-
-          <footer className="mt-8 text-xs text-slate-500">Made with: Hosein Najafi</footer>
         </div>
       </body>
     </html>
-  )
+  );
 }
