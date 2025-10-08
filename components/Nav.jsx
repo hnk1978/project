@@ -32,7 +32,8 @@ export default function Nav() {
         <nav className="mb-4">
             {/* Top bar */}
             <div className="flex items-center justify-between">
-                <div className="text-base sm:text-lg font-semibold">Next.js Data Fetching — MongoDB</div>
+                <div className="text-base sm:text-lg font-semibold">Next.js Data Fetching strategies — MongoDB</div>
+                <div className=" text-slate-500 font-bold text-l">Professor: Mr. Ali Azimi</div>
 
                 <button
                     type="button"
@@ -45,6 +46,9 @@ export default function Nav() {
                     Menu <span className="i">≡</span>
                 </button>
             </div>
+
+            <p className="text-sm text-slate-500">Interactive demo of SSR / SSG / ISR / CSR / Server Actions</p>
+
 
             {/* Mobile (collapsible) */}
             <div
@@ -79,6 +83,10 @@ export default function Nav() {
                     </li>
                 ))}
             </ul>
+            <footer className="mt-8 text-xs text-slate-500">Student: Hosein Najafi</footer>
+
         </nav>
+
+
     );
 }

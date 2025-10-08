@@ -3,10 +3,19 @@
 @tailwind utilities;
 
 /* helper styles */
-body { -webkit-font-smoothing: antialiased; }
+body {
+    -webkit-font-smoothing: antialiased;
+    @apply p-8;
+
+
+}
 
 /* card */
-.card { @apply bg-white rounded-lg shadow-sm p-4; }
+.card {
+    @apply bg-white rounded-lg shadow-sm p-4;
+}
 
 /* subtle timestamp */
-.ts { @apply text-xs text-slate-500; }
+.ts {
+    @apply text-xs text-slate-500;
+}
