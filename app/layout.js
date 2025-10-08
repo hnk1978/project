@@ -13,25 +13,32 @@ export default function RootLayout({ children }) {
           <header className="mb-6">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-2xl font-semibold">Next.js Data Fetching — MongoDB</h1>
+                <h1 className="text-2xl font-semibold">Next.js Data fetching strategies — MongoDB</h1>
                 <p className="text-sm text-slate-500">Interactive demo of SSR / SSG / ISR / CSR / Server Actions</p>
               </div>
-              <div className="text-xs text-slate-500">Professor Mr. Ali Azimi</div>
+              <div className=" text-slate-500 font-bold text-xl">Professor: Mr. Ali Azimi</div>
+
             </div>
 
             <nav className="mt-4 flex gap-3 text-sm">
-              <a href="/" className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md">Server Action</a>
-              <a href="/ssr" className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md">SSR</a>
-              <a href="/ssg" className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md">SSG</a>
-              <a href="/isr" className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md">ISR</a>
-              <a href="/csr" className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md">CSR</a>
-              <a href="/server-fn" className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md">Server Function</a>
+              {/* App Router pages */}
+              <a href="/" className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md">Server Action (App)</a>
+              <a href="/ssr" className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md">SSR (App)</a>
+              <a href="/ssg" className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md">SSG (App)</a>
+              <a href="/isr" className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md">ISR (App)</a>
+              <a href="/csr" className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md">CSR (App)</a>
+              <a href="/server-fn" className="px-3 py-1 rounded-lg bg-white shadow-sm hover:shadow-md">Server Fn (App)</a>
+
+              {/* Pages Router versions */}
+              <a href="/ssr-page" className="px-3 py-1 rounded-lg bg-slate-100 shadow-sm hover:shadow-md">SSR (Pages)</a>
+              <a href="/ssg-page" className="px-3 py-1 rounded-lg bg-slate-100 shadow-sm hover:shadow-md">SSG (Pages)</a>
+              <a href="/isr-page" className="px-3 py-1 rounded-lg bg-slate-100 shadow-sm hover:shadow-md">ISR (Pages)</a>
             </nav>
           </header>
 
           <main>{children}</main>
 
-          <footer className="mt-8 text-xs text-slate-500">Made with Hosein Najafi</footer>
+          <footer className="mt-8 text-xs text-slate-500">Made with: Hosein Najafi</footer>
         </div>
       </body>
     </html>
